@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package todo;
+option go_package = "./;pb";
+
+service BuyCarService {
+
+  rpc CreateCarSale(CreateCarSaleRequest) returns (CreateCarSaleResponse) {}
+  rpc UpdateCarSale(UpdateCarSaleRequest) returns (UpdateCarSaleResponse) {}
+  rpc DeleteCarSale(DeleteCarSaleRequest) returns (DeleteCarSaleResponse) {}
+  rpc GetCarSale(GetCarSaleRequest) returns (GetCarSaleResponse) {}
+
+  rpc CreateSeller(CreateSellerRequest) returns (CreateSellerResponse) {}
+  rpc UpdateSeller(UpdateSellerRequest) returns (UpdateSellerResponse) {}
+  rpc DeleteSeller(DeleteSellerRequest) returns (DeleteSellerResponse) {}
+  rpc GetSeller(GetSellerRequest) returns (GetSellerResponse) {}
+
+}
+
+// CarSale messages
+
+message CreateCarSaleRequest {
+  string brand = 1;
+  string model = 2;
+  int64 sellerID = 3;
+}
+
+message CreateCarSaleResponse {
+  int64 id = 1;
+}
+
+message UpdateCarSaleRequest {
+  CarSale carSale = 1;
+}
+
+message UpdateCarSaleResponse {
+  bool ok = 1;
+}
+
+message DeleteCarSaleRequest {
+  int64 id = 1;
+}
+
+message DeleteCarSaleResponse {
+  bool ok = 1;
+}
+
+message GetCarSaleRequest {
+  int64 id = 1;
+}
+
+message GetCarSaleResponse {
+  CarSale carSale = 1;
+}
+
+message CarSale {
+  int64 id = 1;
+  string brand = 2;
+  string model = 3;
+  int64 sellerID = 4;
+}
+
+// Seller messages
+
+message CreateSellerRequest {
+  string name = 1;
+  string phoneNumber = 2;
+}
+
+message CreateSellerResponse {
+  int64 id = 1;
+}
+
+message UpdateSellerRequest {
+  Seller seller = 1;
+}
+
+message UpdateSellerResponse {
+  bool ok = 1;
+}
+
+message DeleteSellerRequest {
+  int64 id = 1;
+}
+
+message DeleteSellerResponse {
+  bool ok = 1;
+}
+
+message GetSellerRequest {
+  int64 id = 1;
+}
+
+message GetSellerResponse {
+  Seller seller = 1;
+}
+
+message Seller {
+  int64 id = 1;
+  string name = 2;
+  string phoneNumber = 3;
+}
